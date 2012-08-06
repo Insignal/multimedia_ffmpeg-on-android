@@ -1,0 +1,63 @@
+FFmpeg-on-Android
+=================
+
+2012.07, dr.nitro
+
+
+"FFmpeg on Android" project is the open source project for multimedia play
+service which is adopt to Android OS 4.0. "FFmpeg on Android" project is ori-
+ginally designed by dr.nitro and powered by InSignal Co., Ltd.
+
+
+Concept
+-------
+"FFmpeg on Android" project is to enhance multimedia support on Android OS,
+starts on 4.0 ICS version. Currently Android OS has many limits to support
+variety multimedia formats, using specific H/W resources, not also S/W. So,
+we expact, if we can use the famus FFmpeg library in Andorid OS with little
+modification on Android Stagefright; We can overcome many current limits in
+Android muntimedia supports easly.
+
+
+
+Media Flow
+----------
+"FFmpeg on Android" is designed to use FFmpeg library on Android OS, and less
+to modify current Android framework, Stagefright. So, "FFmpeg on Andorid"
+adopt the "Flow-By-Pass" model. "Flow-By-Pass" model designs by pass multi-
+media flow inside of stagefright framework for FFmpeg case. Below flow shows
+how we adopt "Flow-By-Pass" model to use FFmpeg library.
+
+ a) stagefright original flow (in case of AVI)
+		file source -> aviextractor -> avisource -> omx-codec
+ b) FFmpeg on Android flow
+		FFmpegSource(*) -> ffextractor(*) -> ffsource(*) -> omx-codec
+
+(*) is newly added component on FFmpeg on Andorid.
+
+
+Supported Media Format
+----------------------
+2012.07
+ - Container    : AVI
+ - Video Format : XVID
+ - Audio Format : MP3
+
+
+Current Issues
+--------------
+2012.07
+ - There is a bug on seek operation when playing A/V muxed file.
+
+
+License
+-------
+All the source code of "FFmpeg-on-Android" is under Apache license v2.0. If
+you want to know more details about Apache license, see LICENSE file.
+
+
+Contact to us
+-------------
+If you want to contect to us, please visit official web site,
+http://www.origenboard.org/ffmpeg_on_android/. And if you want to contact us,
+please send an email to "ffmpeg-on-android@insignal.co.kr".

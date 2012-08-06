@@ -1,0 +1,45 @@
+
+					FFmpeg on Android Installation
+					==============================
+
+1. Get source code from git server
+
+$ git clone git://git.insignal.co.kr/multimedia/ffmpeg-on-android.git
+
+
+2. Copy source code into Android ICS(4.0) pdk
+
+$ cd ffmpeg-on-android
+$ cp -a src/* [ANDROID_ROOT_DIR]/framework/base/media/libstagefright/.
+$ cp -a include/* [ANDROID_ROOT_DIR]/framework/base/include/media/stagefright/.
+
+
+3. Enable to use FFmpeg on Android
+
+Insert below config into BoardConfig.mk
+
+# Enable to use FFmpeg
+BOARD_USES_FFMPEG := true
+
+
+4. Build Android system
+
+$ make
+or
+$ mm
+
+
+5. Update target system
+
+You can update your target device with fuse all system image. And also you can
+easly update "libstagefright.so" in your target device to apply "FFmpeg on And-
+roid" like below command, after finish build.
+
+$ adb push out/target/produce/[target_name]/system/lib/libstagefright.so \
+ /system/lib
+
+
+6. Trouble-shooting and FAQ
+
+You can discuss about various problems and questions at FFmpeg-on-Android proj-
+ect web site, http://www.origenboard.org/ffmpeg_on_android/.
